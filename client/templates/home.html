@@ -22,17 +22,7 @@
         </div>
     {{else}}
         <div class="container">
-            <div class="row">
-                <div class="card col m5">
-                    <div class="card-content">Profile</div>
-                </div>
-
-                <div class="card col m6 offset-m1">
-                    <div class="card-content">
-                        {{> userEstimateHistoryTable user=currentUser}}
-                    </div>
-                </div>
-            </div>
+            {{> profile user=currentUser}}
         </div>
     {{/if}}
 </template>

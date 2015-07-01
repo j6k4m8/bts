@@ -1,0 +1,22 @@
+<template name="profile_page">
+    <div class="container">
+        {{> profile}}
+    </div>
+</template>
+
+
+<template name="profile">
+    <div class="row">
+        <div class="card col m5">
+            <div class="card-content">
+                <div class="card-title cyan-text text-darken-4">{{user.profile.name}}</div>
+            </div>
+        </div>
+
+        <div class="card col m6 offset-m1">
+            <div class="card-content">
+                {{> userEstimateHistoryTable user=user}}
+            </div>
+        </div>
+    </div>
+</template>
