@@ -1,0 +1,24 @@
+<template name="userEstimateHistoryTable">
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Estimate</th>
+                <th>Actual</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each userEstimates}}
+                {{> userEstimateHistoryTable_Row}}
+            {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="userEstimateHistoryTable_Row">
+    <tr>
+        <td>{{date_to_string}}</td>
+        <td>{{percent estimate}}</td>
+        <td>{{percent actual}}</td>
+    </tr>
+</template>
