@@ -13,6 +13,9 @@ Meteor.methods({
                 'userId': this.userId,
                 'date': new Date()
             });
+            Meteor.users.update(this.userId, {$set: {
+                'profile.points': Meteor.users.findOne(this.userId).profile.points + 10
+            }});
         } else {
             throw new Meteor.Error(500, "You've already cast your estimate for today!");
         }

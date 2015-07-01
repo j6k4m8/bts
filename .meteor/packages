@@ -16,3 +16,4 @@ accounts-ui
 less
 momentjs:moment
 meteorhacks:fast-render
+percolate:synced-cron
