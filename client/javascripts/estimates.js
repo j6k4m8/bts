@@ -15,6 +15,6 @@ Template.userEstimateHistoryTable_Row.helpers({
     actual: function() {
         return Actuals.findOne({
             date: moment(this.date).startOf('day').toDate()
-        }).change;
+        }).change.toFixed(2);
     }
 });
