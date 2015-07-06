@@ -1,5 +1,12 @@
 <template name="main">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    {{> nav}}
-    {{> yield}}
+    <header>
+        {{> nav}}
+    </header>
+    <main>
+        {{> yield}}
+    </main>
+    <footer>
+        {{> footer}}
+    </footer>
 </template>

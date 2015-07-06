@@ -7,13 +7,15 @@
 
 <template name="profile">
     <div class="row">
-        <div class="card col m5">
-            <div class="card-content">
+        <div class="card col m5 s12">
+            <div class="card-content center-align">
                 <div class="card-title cyan-text text-darken-4">{{user.profile.name}}</div>
+                <b>Points:</b>
+                    <span class="label cyan darken-3 white-text"> {{user_points}} </span>
             </div>
         </div>
 
-        <div class="card col m6 offset-m1">
+        <div class="card col m6 offset-m1 s12">
             <div class="card-content">
                 {{> userEstimateHistoryTable user=user}}
             </div>

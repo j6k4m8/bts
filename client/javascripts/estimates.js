@@ -13,8 +13,9 @@ Template.userEstimateHistoryTable_Row.helpers({
     },
 
     actual: function() {
-        return Actuals.findOne({
+        var yesterActual = Actuals.findOne({
             date: moment(this.date).startOf('day').toDate()
-        }).change.toFixed(2);
+        });
+        return yesterActual ? yesterActual.change.toFixed(2) + "%" : '';
     }
 });

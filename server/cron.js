@@ -1,3 +1,13 @@
+pointsForGuess = function(guess, actual) {
+    var diff = Math.abs(actual - guess),
+        points =  50 - (50*(diff / actual)).toFixed(0);
+
+    if (diff.toFixed(2) == 0) { return points + 100; }
+    if (diff < 1) { return points + 50; }
+    if (diff < 3) { return points + 25; }
+    return points < 0 ? 0 : points;
+}
+
 SyncedCron.add({
     name: 'Get latest Actual from API',
     schedule: function(parser) {
@@ -5,6 +15,8 @@ SyncedCron.add({
         return parser.text('at 4:01pm every weekday');
     },
     job: function() {
+        // TODO: This must be abstracted out into multiple functions
+
         var lastTrade = YahooFinance.snapshot({symbols:['^GSPC'],fields: ['l1', 'd1']});
         var closingSP = parseFloat(lastTrade['^GSPC'].lastTradePriceOnly);
 
@@ -17,43 +29,21 @@ SyncedCron.add({
                 'change': (closingSP - lastActual().value) / lastActual().value
             });
 
-            // Now, we can go through all of the user accounts and award points if
-            // someone hit the nail on the head. Meanwhile, we'll keep track of
-            // whoever's the closest, since we'll later award them some points if
-            // no one got better.
-
-            var closestGuess = 9999,
-                closestUserIds = [];
-
             var todaysGuesses = Predictions.find({
                 date: {$gt: moment().startOf('day').toDate()}
             }).fetch();
 
-            var usersCorrect = [];
-
+            // Award points to users.
             _(todaysGuesses).each(function(g) {
-                if (g.estimate.toFixed(2) == closingSP.toFixed(2)) {
-                    usersCorrect.push(g.userId);
-                } else if (usersCorrect.length == 0 &&
-                           Math.abs(g.estimate - closingSP) <= closestGuess) {
-                    closestGuess = Math.abs(g.estimate - closingSP);
-                    closestUserIds.push(g.userId);
-                }
-            });
+                var points = pointsForGuess(g.estimate, closingSP);
+                Predictions.update(g._id, { $set: {
+                    'points': points
+                }});
 
-            if (usersCorrect.length > 0) {
-                Meteor.users.update({
-                    _id: {$in: usersCorrect}
-                }, {
-                    $set: {$inc: {'profile.points': 100}}
-                });
-            } else {
-                Meteor.users.update({
-                    _id: {$in: closestUserIds}
-                }, {
-                    $set: {$inc: {'profile.points': 50}}
-                });
-            }
+                Meteor.users.update(g.userId, {$set: {
+                    'profile.points': points
+                }});
+            });
         }
     }
 });
