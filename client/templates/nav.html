@@ -4,7 +4,7 @@
         <nav class="cyan darken-3">
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <div class="nav-wrapper container">
-                <div class="brand-logo center">BtS</div>
+                <div class="brand-logo center"><a href="{{pathFor 'home'}}">Bpstreet</a></div>
                 <div class="right">
                     <i class="right material-icons">{{currentStatusIcon}}</i>
                     <span class="nav-ticker label {{currentStatusColor}} white-text">{{percent currentChange}}</span>
@@ -13,20 +13,43 @@
         </nav>
 
         <ul class="side-nav" id="mobile-demo">
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+            <li><a href="{{pathFor 'home'}}">Home</a></li>
+            <li><a href="{{pathFor 'scoreboard'}}">Scoreboard</a></li>
+            <li></li>
+            <li><a href="#" class="logout">Log Out</a></li>
         </ul>
     </div>
 </template>
 
 <template name="footer">
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '863237960396529',
+          xfbml      : true,
+          version    : 'v2.4'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
     <footer class="page-footer cyan darken-4">
         <div class="footer-copyright">
             <div class="container">
                 © 2015 Beat the Street
-                <a class="grey-text text-lighten-4 label right" href="#!">facebook</a> &nbsp;
+                <span
+                  class="fb-like right"
+                  data-share="true"
+                  data-width="450"
+                  data-show-faces="true">
+                </span>
+                &nbsp;
                 <a class="grey-text text-lighten-4 label right" href="#!">twitter</a>
             </div>
         </div>

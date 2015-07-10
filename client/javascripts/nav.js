@@ -9,6 +9,9 @@ Template.nav.created = function() {
     Meteor.call('currentChange', function(err, val) {
         Session.set('currentChange', val);
     });
+    Meteor.call('marketsOpen', function(err, val) {
+        Session.set('marketsOpen', val);
+    });
 };
 
 Template.nav.helpers({
@@ -27,6 +30,14 @@ Template.nav.helpers({
         return Session.get('currentChange') < 0 ? 'trending_down' : 'trending_up';
     }
 });
+
+Template.nav.events({
+    'click .logout': function() {
+        Meteor.logout(function(er) {
+            Router.go('home');
+        });
+    }
+})
 
 Meteor.setInterval(function() {
     Meteor.call('currentActual', function(err, val) {

@@ -9,7 +9,7 @@ Template.userEstimateHistoryTable.helpers({
 
 Template.userEstimateHistoryTable_Row.helpers({
     date_to_string: function() {
-        return moment(this.date).calendar();
+        return moment(this.date).format('l');
     },
 
     actual: function() {

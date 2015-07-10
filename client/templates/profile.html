@@ -5,14 +5,20 @@
 </template>
 
 
-<template name="profile">
+<template name="profile"> {{title user.profile.name}}
     <div class="row">
-        <div class="card col m5 s12">
-            <div class="card-content center-align">
-                <div class="card-title cyan-text text-darken-4">{{user.profile.name}}</div>
-                <b>Points:</b>
+        <div class="col m5 s12">
+            <div class="card">
+                <div class="card-content center-align">
+                    {{> profile_picture user=user}}
+                    <div class="card-title cyan-text text-darken-4">{{user.profile.name}}</div>
+                    <b>Points:</b>
                     <span class="label cyan darken-3 white-text"> {{user_points}} </span>
+                    <br>
+                    <b>Average Error: </b>{{user_error}}
+                </div>
             </div>
+            {{> castEstimate}}
         </div>
 
         <div class="card col m6 offset-m1 s12">
@@ -20,5 +26,10 @@
                 {{> userEstimateHistoryTable user=user}}
             </div>
         </div>
+
     </div>
+</template>
+
+<template name="profile_picture">
+    <img src="{{getImageForUser user}}" class="propic" style="height:{{size}}; width:{{size}};{{radius}}">
 </template>

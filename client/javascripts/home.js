@@ -1,4 +1,4 @@
-Template.user_home.events({
+Template.castEstimate.events({
     'change #estimate_input, input #estimate_input, paste #estimate_input, keyup #estimate_input, mouseup #estimate_input': function(ev) {
         var $el = $(ev.target),
             val = parseFloat(ev.target.value);

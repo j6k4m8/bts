@@ -12,6 +12,13 @@ currentActual = function() {
     })['^GSPC'].lastTradePriceOnly);
 };
 
+marketsOpen = function() {
+    return moment(YahooFinance.snapshot({
+        symbols:['^GSPC'],
+        fields: ['l1', 'd1']
+    })['^GSPC'].lastTradeDate).startOf('day').toDate()*1 == moment().startOf('day').toDate()*1
+}
+
 // lastActual = function() {
 //     return Actuals.find({}, {sort: {date: -1}}).fetch()[0];
 // }
@@ -23,5 +30,6 @@ currentChange = function() {
 
 Meteor.methods({
     currentActual: currentActual,
-    currentChange: currentChange
+    currentChange: currentChange,
+    marketsOpen: marketsOpen
 });
