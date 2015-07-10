@@ -18,8 +18,8 @@
                     <b>Average Error: </b>{{user_error}}
                 </div>
             </div>
-            {{#if user=currentUser}}
-            {{> castEstimate}}
+            {{#if is_my_profile}}
+                {{> castEstimate}}
             {{/if}}
         </div>
 

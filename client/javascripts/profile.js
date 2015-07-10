@@ -18,6 +18,10 @@ Template.profile.helpers({
             }
         });
         return error;
+    },
+
+    is_my_profile: function() {
+        return this.user._id == Meteor.userId();
     }
 });
 
