@@ -19,7 +19,7 @@
 <template name="scoreboardEstimateHistoryTable_Row">
     <tr>
         <td>{{> profile_picture user=user circle=true size="1.5em"}}
-            <a href="{{pathFor 'profile' userId=user._id}}">{{user.profile.name}}</a></td>
+            <a href="{{pathFor 'profile' userId=user._id}}">{{nameFor user}}</a></td>
         <td>{{date_to_string}}</td>
         <td>{{percent estimate}}</td>
         <td>{{actual}}</td>

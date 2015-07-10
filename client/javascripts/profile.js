@@ -26,7 +26,7 @@ UI.registerHelper('getImageForUser', function(user) {
 });
 
 UI.registerHelper('socialLinkForUser', function(user) {
-    return "<a href='https://facebook.com/" + user.services.facebook.id + "'>" + user.profile.name + "</a>";
+    return "<a href='https://facebook.com/" + user.services.facebook.id + "'>" + user.profile.name || user.username + "</a>";
 });
 
 
