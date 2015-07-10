@@ -19,14 +19,17 @@ Template.nav.helpers({
         return Session.get('currentActual');
     },
     currentChange: function() {
+        if (!marketsOpen()) { return 'Markets Closed' }
         return Session.get('currentChange');
     },
 
     currentStatusColor: function() {
+        if (!marketsOpen()) { return 'grey' }
         return Session.get('currentChange') < 0 ? 'red' : 'green';
     },
 
     currentStatusIcon: function() {
+        if (!marketsOpen()) { return 'schedule' }
         return Session.get('currentChange') < 0 ? 'trending_down' : 'trending_up';
     }
 });

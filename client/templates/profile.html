@@ -18,7 +18,9 @@
                     <b>Average Error: </b>{{user_error}}
                 </div>
             </div>
+            {{#if user=currentUser}}
             {{> castEstimate}}
+            {{/if}}
         </div>
 
         <div class="card col m6 offset-m1 s12">

@@ -29,10 +29,6 @@ UI.registerHelper('socialLinkForUser', function(user) {
     return "<a href='https://facebook.com/" + user.services.facebook.id + "'>" + user.profile.name + "</a>";
 });
 
-UI.registerHelper('title', function(title) {
-    document.title = title + " | Bpstreet";
-});
-
 
 Template.profile_picture.helpers({
     'radius': function() {

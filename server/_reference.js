@@ -17,6 +17,8 @@ marketsOpen = function() {
         symbols:['^GSPC'],
         fields: ['l1', 'd1']
     })['^GSPC'].lastTradeDate).startOf('day').toDate()*1 == moment().startOf('day').toDate()*1
+    &&
+    (!!~_.range(10, 16).indexOf(moment().hours()) || (moment().hours == 9 && moment().minutes >= 30))
 }
 
 // lastActual = function() {
