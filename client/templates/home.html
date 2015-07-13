@@ -8,7 +8,13 @@
 
 <template name="user_home"> {{title 'Home'}}
     {{#if currentUserMayCastEstimate}}
-        {{> castEstimate}}
+        <div class="container">
+            <div class="row">
+                <div class="col m6 offset-m3">
+                    {{> castEstimate}}
+                </div>
+            </div>
+        </div>
     {{else}}
         <div class="container">
             {{> profile user=currentUser}}

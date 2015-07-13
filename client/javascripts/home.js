@@ -9,7 +9,7 @@ Template.castEstimate.events({
 
     'click .submit-estimate': function() {
         var val = parseFloat($('#estimate_input').val());
-        if (val) {
+        if (val == 0 || val) {
             Meteor.call('castEstimate', val, function(err, val) {
                 if (err) { Materialize.toast(err, 3000); }
             });
