@@ -1,6 +1,6 @@
 Template.scoreboard.helpers({
     'users': function() {
-        return Meteor.users.find({}, {$sort: 'profile.points'});
+        return Meteor.users.find({}, {$sort: {'profile.points': 1}});
     }
 })
 
