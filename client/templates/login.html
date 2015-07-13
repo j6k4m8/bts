@@ -10,6 +10,7 @@
                 <input type="text" placeholder="Username" id="login_un">
                 <input type="password" placeholder="Password" id="login_pw">
             </div>
+            <p class="grey-text">By clicking Log In, you agree to the terms and conditions listed <a href="{{pathFor 'terms'}}">here</a>.</p>
             <div class="card-action">
                 <a href="{{pathFor 'register'}}">Register</a>
                 <a href="#" class="submit-login right">Log In</a>
@@ -32,6 +33,8 @@
                 <input type="email" placeholder="Email" id="login_em">
                 <input type="password" placeholder="Password" id="login_pw">
             </div>
+            <p class="grey-text">By creating an account, you agree to the terms and conditions listed <a href="{{pathFor 'terms'}}" target="_blank">here</a>.</p>
+
             <div class="card-action">
                 <a href="#" class="submit-register">Register</a>
             </div>
