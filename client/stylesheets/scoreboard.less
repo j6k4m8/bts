@@ -1,0 +1,16 @@
+table.striped tbody tr {
+    counter-increment: step-counter;
+}
+
+table.striped tbody tr::before {
+    content: counter(step-counter);
+    margin: auto;
+    font-size: 80%;
+    color: rgb(255, 255, 255);
+    background: rgb(33, 108, 42);
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 3px;
+    vertical-align: -1.2em;
+    margin-left: 1em;
+}

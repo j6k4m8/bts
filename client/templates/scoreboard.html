@@ -1,27 +1,31 @@
 <template name="scoreboard"> {{title 'Scoreboard'}}
-    <table class="striped">
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Date</th>
-                <th>Estimate</th>
-                <th>Actual</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each estimates}}
-                {{> scoreboardEstimateHistoryTable_Row}}
-            {{/each}}
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col m8 offset-m2">
+                <table class="striped">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>User</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each users}}
+                            {{> scoreboard_row}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </template>
 
-<template name="scoreboardEstimateHistoryTable_Row">
+<template name="scoreboard_row">
     <tr>
-        <td>{{> profile_picture user=user circle=true size="1.5em"}}
-            <a href="{{pathFor 'profile' userId=user._id}}">{{nameFor user}}</a></td>
-        <td>{{date_to_string}}</td>
-        <td>{{percent estimate}}</td>
-        <td>{{actual}}</td>
+        <td>{{> profile_picture user=this circle=true size="1.5em"}}
+            <a href="{{pathFor 'profile' userId=this._id}}">{{nameFor this}}</a></td>
+        <td>{{user_points}}</td>
     </tr>
 </template>

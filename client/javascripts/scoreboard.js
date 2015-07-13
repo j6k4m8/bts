@@ -1,11 +1,14 @@
 Template.scoreboard.helpers({
-    'estimates': function() {
-        return Predictions.find();
+    'users': function() {
+        return Meteor.users.find();
     }
 })
 
-Template.scoreboardEstimateHistoryTable_Row.helpers({
+Template.scoreboard_row.helpers({
     'user': function() {
         return Meteor.users.findOne(this.userId)
-    }
+    },
+    user_points: function() {
+        return this.profile.points;
+    },
 })

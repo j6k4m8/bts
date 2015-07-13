@@ -17,11 +17,15 @@ Template.profile.helpers({
                 error /= ++iter;
             }
         });
-        return error;
+        return error.toFixed(2);
     },
 
     is_my_profile: function() {
         return this.user._id == Meteor.userId();
+    },
+
+    nameForUser: function() {
+        return this.user.name || this.user.profile.name || this.user.username;
     }
 });
 
