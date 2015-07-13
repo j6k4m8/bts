@@ -3,7 +3,7 @@ Template.scoreboard.helpers({
         var users = Meteor.users.find().fetch();
         return _(users).sortBy(function(i) {
             return -1 * i.profile.points;
-        })
+        });
     }
 })
 
