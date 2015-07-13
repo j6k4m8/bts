@@ -1,6 +1,7 @@
 Accounts.onCreateUser(function(opts, user) {
     if (opts.profile) {
         user.profile = opts.profile;
+        user.profile.points = 0;
     } else {
         user.profile = {
             'points': 0
@@ -8,6 +9,8 @@ Accounts.onCreateUser(function(opts, user) {
     };
     if (user.services && user.services.facebook) {
         user.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
+    } else if (user.services && user.services.twitter) {
+        user.profile.picture = user.services.twitter.profile_image_url;
     }
 
     return user;

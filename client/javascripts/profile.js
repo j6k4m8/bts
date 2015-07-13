@@ -34,7 +34,13 @@ UI.registerHelper('getImageForUser', function(user) {
 });
 
 UI.registerHelper('socialLinkForUser', function(user) {
-    return "<a href='https://facebook.com/" + user.services.facebook.id + "'>" + user.profile.name || user.username + "</a>";
+    if (user.services.facebook) {
+        return "<a href='https://facebook.com/" + user.services.facebook.id + "'>" + user.profile.name || user.username + "</a>";
+    }
+    if (user.services.twitter) {
+        return "a href='https://twitter.com/" + user.services.twitter.screenName + "'>" + user.profile.name || user.username + "</a>";
+    }
+    return "http://bpstreet.com/users/" + user._id
 });
 
 
