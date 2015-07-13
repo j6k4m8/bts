@@ -33,7 +33,7 @@ runScores = function() {
                 'points': points
             }});
 
-            Meteor.users.update(g.userId, {$set: {
+            Meteor.users.update(g.userId, {$inc: {
                 'profile.points': points
             }});
         });
