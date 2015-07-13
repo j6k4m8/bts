@@ -3,19 +3,19 @@
 
         <nav class="primary-bp darken-3">
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <div class="nav-wrapper container">
+            <div class="nav-wrapper">
                 <div class="brand-logo center"><a href="{{pathFor 'home'}}"><img class="logo-image" src="/img/logo.png"> bpStreet</a></div>
                 <div class="left">
-                    <i class="left material-icons">{{currentStatusIcon}}</i>
                     <span class="nav-ticker label {{currentStatusColor}} white-text">{{percent currentChange}}</span>
+                    <i class="left material-icons">{{currentStatusIcon}}</i>
                 </div>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{pathFor 'home'}}">Home</a></li>
+                    <li><a href="{{pathFor 'scoreboard'}}">Scoreboard</a></li>
+                    <li><a href="{{pathFor 'about'}}">About</a></li>
+                    <li><a href="#" class="logout">Log Out</a></li>
+                </ul>
             </div>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="{{pathFor 'home'}}">Home</a></li>
-                <li><a href="{{pathFor 'scoreboard'}}">Scoreboard</a></li>
-                <li><a href="{{pathFor 'about'}}">About</a></li>
-                <li><a href="#" class="logout">Log Out</a></li>
-            </ul>
         </nav>
 
         <ul class="side-nav" id="mobile-demo">
