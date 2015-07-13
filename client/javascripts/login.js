@@ -28,5 +28,17 @@ Template.login.events({
                 Materialize.toast('Invalid login: ' + er, 5000);
             }
         });
+    },
+
+    'click .tw-login-btn': function() {
+        Meteor.loginWithTwitter({
+            loginStyle: 'popup'
+        }, function(er) {
+            if (!er) {
+                Router.go('home');
+            } else {
+                Materialize.toast('Invalid login: ' + er, 5000);
+            }
+        });
     }
 });

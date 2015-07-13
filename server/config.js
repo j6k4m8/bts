@@ -17,6 +17,16 @@ ServiceConfiguration.configurations.upsert(
     { service: "facebook" }, {
         $set: {
             "appId": "863237960396529",
+            "loginStyle": 'popup',
             "secret": Meteor.settings.facebook_secret
+        }
+    });
+
+ServiceConfiguration.configurations.upsert(
+    { service: "twitter" }, {
+        $set: {
+            "consumerKey": "PReNssm6G85ee8TyV2vFHlFaQ",
+            "loginStyle": 'popup',
+            "secret": Meteor.settings.twitter_secret
         }
     });
