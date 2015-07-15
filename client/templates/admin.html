@@ -1,3 +1,6 @@
 <template name="admin">
-
+    {{#if is_admin}}
+        <a href="#" class="btn blue js-csv-predictions">Download CSV of Predictions</a>
+        <a href="#" class="btn blue js-csv-actuals">Download CSV of Actuals</a>
+    {{/if}}
 </template>
