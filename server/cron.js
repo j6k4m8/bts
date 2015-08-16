@@ -58,6 +58,6 @@ SyncedCron.add({
         return parser.text('at 4:01pm every weekday');
     },
     job: function() {
-        runScores(moment());
+        runScores(moment().startOf('day'));
     }
 });

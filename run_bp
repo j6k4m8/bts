@@ -1,0 +1,1 @@
+ROOT_URL='http://bpstreet.com' meteor --settings settings.json --production --port 3030
