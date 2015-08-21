@@ -9,11 +9,12 @@ pointsForGuess = function(guess, actual) {
 }
 
 
-runScores = function(momentTodayMorning) {
+runScores = function(momentTodayMorning, forceRun) {
+    momentTodayMorning = moment(momentTodayMorning).startOf('day');
     var lastTrade = YahooFinance.snapshot({symbols:['^GSPC'],fields: ['l1', 'd1']});
     var closingSP = parseFloat(lastTrade['^GSPC'].lastTradePriceOnly);
 
-    if (!Actuals.findOne({
+    if (forceRun || !Actuals.findOne({
         date: momentTodayMorning.startOf('day').toDate()
     })) {
         var aId = Actuals.insert({
@@ -34,12 +35,13 @@ runScores = function(momentTodayMorning) {
         });
 */
         var todaysGuesses = Predictions.find({
-            date: {$gt: momentTodayMorning.startOf('day').toDate()}
+            date: {$gte: momentTodayMorning.startOf('day').toDate()}
         }).fetch();
 
         // Award points to users.
         _(todaysGuesses).each(function(g) {
             var points = pointsForGuess(g.estimate, a.change);
+            console.log(points + " for " + g.userId);
             Predictions.update(g._id, { $set: {
                 'points': points
             }});
@@ -61,3 +63,6 @@ SyncedCron.add({
         runScores(moment().startOf('day'));
     }
 });
+
+
+SyncedCron.start();
