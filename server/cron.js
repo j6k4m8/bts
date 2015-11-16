@@ -20,7 +20,7 @@ runScores = function(momentTodayMorning, forceRun) {
         var aId = Actuals.insert({
             'value': closingSP,
             'date': momentTodayMorning.startOf('day').toDate(),
-            'change': (closingSP - lastActual().value) / lastActual().value
+            'change': 100 * (closingSP - lastActual().value) / lastActual().value
         });
         var a = Actuals.findOne(aId);
 

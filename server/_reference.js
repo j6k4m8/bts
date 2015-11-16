@@ -27,7 +27,7 @@ marketsOpen = function() {
 
 currentChange = function() {
     var last = lastActual().value;
-    return ((currentActual() - last) / last).toFixed(2);
+    return (100*((currentActual() - last) / last)).toFixed(2);
 };
 
 Meteor.methods({
