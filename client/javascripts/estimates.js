@@ -14,7 +14,8 @@ Template.userEstimateHistoryTable_Row.helpers({
 
     actual: function() {
         var yesterActual = Actuals.findOne({
-            date: moment(this.date).startOf('day').toDate()
+            date: {$lt: moment(this.date).startOf('day').toDate()},
+            date: {$gt: moment(this.date).startOf('day').subtract(1, 'day').toDate()}
         });
         return yesterActual ? yesterActual.change.toFixed(2) + "%" : '';
     }

@@ -15,8 +15,8 @@ currentActual = function() {
 marketsOpen = function() {
     return moment(YahooFinance.snapshot({
         symbols:['^GSPC'],
-        fields: ['l1', 'd1']
-    })[0].lastTradeDate).startOf('day').toDate()*1 == moment().startOf('day').toDate()*1
+        fields: ['l1', 't1']
+    })[0].lastTradeTime, "HH:mma").startOf('day').toDate()*1 == moment().startOf('day').toDate()*1
     &&
     (!!~_.range(10, 16).indexOf(moment().hours()) || (moment().hours == 9 && moment().minutes >= 30))
 }

@@ -12,7 +12,7 @@ pointsForGuess = function(guess, actual) {
 runScores = function(momentTodayMorning, forceRun) {
     momentTodayMorning = moment(momentTodayMorning).startOf('day');
     var lastTrade = YahooFinance.snapshot({symbols:['^GSPC'],fields: ['l1', 'd1']});
-    var closingSP = parseFloat(lastTrade['^GSPC'].lastTradePriceOnly);
+    var closingSP = parseFloat(lastTrade[0].lastTradePriceOnly);
 
     if (forceRun || !Actuals.findOne({
         date: momentTodayMorning.startOf('day').toDate()
